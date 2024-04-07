@@ -36,7 +36,7 @@ const {
   isLoading,
   error,
   execute: fetchStats
-} = useAxios<StatsResp>('json/stats.json', {
+} = useAxios<StatsResp>('/json/stats.json', {
   //
 }, {
   immediate: false
@@ -60,7 +60,7 @@ useIntervalFn(fetchStats, 2000, {
     </div>
     <div
       v-else-if="stats"
-      class="flex flex-col items-stretch gap-6 mb-4"
+      class="grid lg:grid-cols-2 gap-6 mb-4 items-stretch gap-6 mb-4"
     >
       <div
         v-for="stat of stats.servers"
@@ -107,7 +107,7 @@ useIntervalFn(fetchStats, 2000, {
 
         <div
           v-if="isOnline(stat, stats.updated)"
-          class="flex flex-col md:flex-row md:grid md:grid-cols-2 lg:grid-cols-3 mt-3 gap-3 md:gap-x-5"
+          class="flex flex-col mt-3 gap-3"
         >
           <!-- CPU -->
           <div class="flex items-center gap-2">
