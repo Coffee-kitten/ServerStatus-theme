@@ -41,7 +41,7 @@ defineProps<{
           leave-to-class="transform scale-95 opacity-0"
         >
           <menu-items
-            class="absolute top-10 right-0 w-40 p-1 origin-top-right rounded-md bg-white/75 dark:bg-black/75 backdrop-blur text-gray-700 dark:text-gray-200 shadow-lg ring-1 ring-black/5 focus:outline-none"
+            class="z-10 absolute top-10 right-0 w-40 p-1 origin-top-right rounded-md bg-white/75 dark:bg-black/75 backdrop-blur text-gray-700 dark:text-gray-200 shadow-lg ring-1 ring-black/5 focus:outline-none"
           >
             <menu-item v-slot="{ active }">
               <router-link
