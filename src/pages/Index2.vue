@@ -130,7 +130,7 @@ useIntervalFn(fetchStats, 2000, {
     </div>
     <div class="flex-none"></div>
   </div>
-  <div class="flex flex-col" v-if="stats">
+  <div class="flex flex-col gap-1" v-if="stats">
     <template v-for="(stat0, index) of stats.servers">
       <details
         v-if="index === 0 || stat0.gid !== stats.servers[index - 1].gid"
@@ -141,7 +141,9 @@ useIntervalFn(fetchStats, 2000, {
         </summary>
         <div class="collapse-content">
           <div class="overflow-x-auto">
-            <table class="table table-auto table-pin-rows table-pin-cols">
+            <table
+              class="table table-zebra table-auto table-pin-rows table-pin-cols"
+            >
               <thead>
                 <tr>
                   <th>IPV4</th>
@@ -282,9 +284,32 @@ useIntervalFn(fetchStats, 2000, {
       </details>
     </template>
   </div>
+  <span v-else class="loading loading-spinner loading-xs"></span>
   <footer class="footer footer-center p-4 bg-base-300 text-base-content">
     <aside>
-      <p>Copyright © 2024 - All right reserved by ACME Industries Ltd</p>
+      <p>
+        <span class="inline-block"
+          >Powered by
+          <a
+            class="underline underline-offset-2"
+            href="https://github.com/zdz/ServerStatus-Rust"
+            target="_blank"
+            ref="noreferer"
+            >ServerStatus-Rust</a
+          ></span
+        ><span
+          class="inline-block text-gray-400 dark:text-gray-500 mx-2"
+          aria-hidden="true"
+          >|</span
+        >
+        <a
+          class="inline-block underline underline-offset-2"
+          href="https://github.com/Coffee-kitten/ServerStatus-theme"
+          target="_blank"
+          rel="noreferrer"
+          >Theme</a
+        >
+      </p>
     </aside>
   </footer>
 </template>
