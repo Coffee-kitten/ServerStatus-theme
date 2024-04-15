@@ -56,7 +56,7 @@ useIntervalFn(fetchStats, 2000, {
         <p v-if="stats?.updated" class="text-sm">
           Refreshed at {{ new Date(stats?.updated * 1000).toLocaleString() }}
         </p>
-        <p v-if="error" class="text-sm text-red-600">
+        <p v-else="error" class="text-sm text-red-600">
           Last refresh attempt failed with {{ error }}
         </p>
       </div>
@@ -119,7 +119,7 @@ useIntervalFn(fetchStats, 2000, {
           </svg>
         </summary>
         <ul
-          class="z-20 p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52"
+          class="z-10 p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52"
         >
           <li><a>Stats</a></li>
           <li><a>Details</a></li>
@@ -240,9 +240,9 @@ useIntervalFn(fetchStats, 2000, {
                       {{ formatSize(stat.network_out) }}
                     </th>
                     <th>{{ stat.tcp_count }} | {{ stat.udp_count }}</th>
-                    <th class="z-20">
+                    <th>
                       <div
-                        class="tooltip"
+                        class="tooltip tooltip-left"
                         :data-tip="
                           stat.process_count +
                           'Processes / ' +
@@ -251,25 +251,25 @@ useIntervalFn(fetchStats, 2000, {
                         "
                       >
                         <progress
-                          class="progress progress-primary w-12"
+                          class="progress progress-success w-12"
                           :value="stat.cpu"
                           max="100"
                         ></progress>
                       </div>
                     </th>
-                    <th class="z-20">
-                      <div class="tooltip" :data-tip="getMemoryText(stat)">
+                    <th>
+                      <div class="tooltip tooltip-left" :data-tip="getMemoryText(stat)">
                         <progress
-                          class="progress progress-primary w-12"
+                          class="progress progress-success w-12"
                           :value="getMemoryPercentage(stat)"
                           max="100"
                         ></progress>
                       </div>
                     </th>
-                    <th class="z-20">
-                      <div class="tooltip" :data-tip="getDiskText(stat)">
+                    <th>
+                      <div class="tooltip tooltip-left" :data-tip="getDiskText(stat)">
                         <progress
-                          class="progress progress-primary w-12"
+                          class="progress progress-success w-12"
                           :value="getDiskPercentage(stat)"
                           max="100"
                         ></progress>
@@ -285,8 +285,10 @@ useIntervalFn(fetchStats, 2000, {
     </template>
   </div>
   <span v-else class="loading loading-spinner loading-xs"></span>
+
   <footer class="footer footer-center p-4 bg-base-300 text-base-content">
     <aside>
+      <p class="mb-2 text-xs"> OnePixel's Cloud Status </p>
       <p>
         <span class="inline-block"
           >Powered by
